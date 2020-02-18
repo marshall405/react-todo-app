@@ -10,6 +10,7 @@ function random() {
 function App() {
   const [todos, setTodos] = useState([])
   const [isChecked, changeChecked] = useState(false)
+  const [showClearButton, changeClearButton] = useState(false)
   const todoNameRef = useRef()
 
   useEffect(() => {
@@ -21,6 +22,12 @@ function App() {
   useEffect(() => {
     // update local storage when our state changes -- list of todos 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
+    const anyCompletedItems = todos.find(todo => todo.complete)
+    if (anyCompletedItems) {
+      changeClearButton(true)
+    } else {
+      changeClearButton(false)
+    }
   }, [todos])
 
   function handleAddTodo() {
@@ -67,12 +74,13 @@ function App() {
     changeChecked(isChecked ? false : true)
     setTodos(completeAllTodos)
   }
+
   return (
     <div className="App">
-      <input ref={todoNameRef} type='text' placeholder='to do item' onKeyDown={handleKey} />
+      <input ref={todoNameRef} type='text' placeholder='add item' onKeyDown={handleKey} />
       <div className='button-container'>
         <button onClick={handleAddTodo}>add item</button>
-        <button onClick={handleCompleteItems}> clear complete </button>
+        {showClearButton ? <button onClick={handleCompleteItems}> clear complete </button> : null}
       </div>
       <div className='total-items'>{todos.length} items</div>
       <ToDoList todos={todos} toggleTodo={toggleTodo} selectAll={selectAll} isChecked={isChecked} />

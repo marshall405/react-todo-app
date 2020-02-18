@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 :root {
     --primaryColor : #653737;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .App {
@@ -10,7 +12,8 @@
     width: 80%;
     max-width: 800px;
     margin: 0 auto;
-    color: var(--primaryColor)
+    color: var(--primaryColor);
+    font-size: 16px;
 }
 
 .App > input {
@@ -18,9 +21,11 @@
     margin: 10px 0px 20px 0px;
     font-size: 2em;
     border: none;
-    border-bottom: 1px solid var(--primaryColor)
+    border-bottom: 1px solid var(--primaryColor);
 }
-
+.App > input:focus {
+    outline-color: var(--primaryColor);
+}
 .button-container {
     display: block;
     width: 100%;
@@ -35,6 +40,7 @@
     border:1px solid var(--primaryColor);
     border-radius: 5px; 
     color: var(--primaryColor);
+    box-shadow: 2px 2px 2px black;
 
 }
 
@@ -42,6 +48,10 @@
     background-color: var(--primaryColor);
     color: white;
     cursor: pointer;
+    box-shadow: none;
+}
+.button-container > button:focus {
+    outline-color: var(--primaryColor);
 }
 .todo-container {
     display: flex;
@@ -52,32 +62,72 @@
     margin: 0px auto;
     flex-wrap: wrap;
     width: 100%;
+    font-size: 1.5em;
 }
 
 .todo-item {
     width: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
     word-wrap: break-word;
     box-sizing: border-box;
     overflow: hidden;
-    border-radius: 5px; 
-
-}
-.todo-item label {
-    display: block;
-    width: 100%;
-    min-height: 30px;
-    padding: 10px;
     border-bottom: 1px solid var(--primaryColor);
 }
-.todo-item > label > input {
-    margin: 0px 15px;
-}
-.todo-item label:hover {
+.todo-item:hover {
     background-color: var(--primaryColor);
     color: white;
     cursor: pointer;
+    border-radius: 5px; 
 }
+.todo-item label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 30px;
+    padding: 10px;
+}
+.todo-item > label:hover {
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    text-decoration-color: var(--primaryColor);
+}
+.customCheckbox {
+    background-color: white;
+    color: var(--primaryColor);
+    display: inline-block;
+    border-radius: 5px; 
+    padding: 0px 5px;
+    margin: 0px 10px 0px 10px;
+    width: 16px;
+    height: 20px;
+    border: 1px solid var(--primaryColor);
+    user-select: none;
+    font-size: .7em
+}
+.customCheckbox:hover {
+    cursor: pointer;
+}
+
+
+.custom-check-box-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1.5em;
+}
+.custom-check-box-container > p {
+   font-size: .5em;
+}
+
+
+
+
+
+
 
 
 .checkAll {
@@ -95,3 +145,5 @@
     width: 100%;
     text-align: right;
 }
+
+
