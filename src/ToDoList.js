@@ -8,7 +8,7 @@ export default function ToDoList({ todos, toggleTodo, selectAll, isChecked }) {
                 <div ref={customCheckBox} className={todos.length > 1 ? 'customCheckbox' : 'hide'} onClick={selectAll}>
                     {isChecked ? '\u2714' : null}
                 </div>
-                <p>check all</p>
+                <p className={todos.length > 1 ? '' : 'hide'}>check all</p>
             </div>
             <div className='todo-container'>
                 {
@@ -24,16 +24,3 @@ export default function ToDoList({ todos, toggleTodo, selectAll, isChecked }) {
 
 
 
-{/* <>
-<div className={todos.length > 1 ? 'checkAll' : 'checkAll hide'}>
-    <input type='checkbox' checked={isChecked} onChange={selectAll} /> select all
-</div>
-<div className='todo-container'>
-
-    {
-        todos.map(todo => {
-            return <ToDo key={todo.id} todo={todo} toggleTodo={toggleTodo} />
-        })
-    }
-</div>
-</> */}

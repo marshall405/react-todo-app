@@ -8,10 +8,10 @@ export default function ToDo({ todo, toggleTodo }) {
     }
     return (
         <div className='todo-item' onClick={handleCustomCheckBox}>
-
-            <div ref={customCheckBox} className='customCheckbox' >
-                {todo.complete ? '\u2714' : null}
+            <div ref={customCheckBox} className={todo.complete ? 'showWOBorder' : 'customCheckbox'} >
+                <p className={todo.complete ? 'show' : 'hide'}>&#10004;</p>
             </div>
+
             <label className={todo.complete ? 'completed' : null}  >
                 {/* <input type='checkbox' checked={todo.complete} onChange={handleTodoToggle} /> */}
                 {todo.name}
